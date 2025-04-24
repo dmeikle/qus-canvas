@@ -18,13 +18,17 @@ export class CoursesFactory {
      * @private
      */
     private async fetchCourses(endpoint: string): Promise<CourseInterface[]> {
+        console.log(`Fetching courses from endpoint: ${endpoint}`);
         const response: HttpResponse<any> | undefined = await this.connector.get(endpoint);
+        console.log(response);
         if (response) {
             const courses: any = toCamelCase(response.data);
             const coursePromises = courses.map(async (course: any) => ({
                 ...course,
                 id: '', // let the user generate their own local GUID
-                courseNumber: course.id // Map API id to courseId
+                courseNumber: course.id, // Map API id to courseId
+                remoteCreatedAt: course.createdAt,
+                remoteUuid: course.uuid,
             }));
             return await Promise.all(coursePromises);
         }

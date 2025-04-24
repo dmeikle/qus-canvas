@@ -24,7 +24,5 @@ jobs:
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage/*.json
-          flags: unittests
-          name: codecov-coverage
+           token: ${{ secrets.CODECOV_TOKEN }}
+           slug: dmeikle/qus-node-pdf-generator

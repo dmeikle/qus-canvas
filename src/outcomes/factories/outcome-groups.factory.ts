@@ -44,7 +44,8 @@ export class OutcomeGroupsFactory {
         return {
             ...outcomeGroup,
             id: '', // let the user generate their own local GUID
-            outcomeGroupNumber: outcomeGroup.id // Map API id to termId
+            outcomeGroupNumber: outcomeGroup.id, // Map API id to termId
+            contextNumber: outcomeGroup.contextId
         };
     }
 
