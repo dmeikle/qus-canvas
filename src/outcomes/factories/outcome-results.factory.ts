@@ -45,12 +45,16 @@ export class OutcomeResultsFactory {
         const response: HttpResponse<any> | undefined = await this.connector.get(endpoint);
         if (response) {
             const outcomeResults: any = toCamelCase(response.data);
-            const outcomeResultPromises = outcomeResults.outcomeResults.map(async (outcomeResult: OutcomeResultInterface) => ({
+            const outcomeResultPromises = outcomeResults.outcomeResults.map(async (outcomeResult: any) => ({
                 ...outcomeResult,
                 id: '', // let the user generate their own local GUID
-                outcomeResultNumber: outcomeResult.id // Map API id to courseId
-
+                outcomeResultNumber: outcomeResult.id,
+                outcomeNumber: outcomeResult.links.learningOutcome,
+                studentNumber: Number(outcomeResult.links.user),
+                alignment: Number(outcomeResult.links.alignment.match(/\d+/)?.[0]),
+                assignmentNumber: Number(outcomeResult.links.assignment.match(/\d+/)?.[0])
             }));
+
             return await Promise.all(outcomeResultPromises);
         }
         return [];

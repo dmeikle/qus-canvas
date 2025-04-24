@@ -26,7 +26,8 @@ export class OutcomeRollupsFactory {
 
 
     /**
-     * List outcome rollups by course     *
+     * List outcome rollups by course
+     *
      * @param courseId
      * @param page
      * @param size

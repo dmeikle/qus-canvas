@@ -24,7 +24,7 @@
  */
 
 export interface OutcomeGroupInterface {
-    id: string;
+    id: number;
     title: string;
     vendorGuid: string | null;
     url: string;
@@ -32,7 +32,16 @@ export interface OutcomeGroupInterface {
     outcomesUrl: string;
     canEdit: boolean;
     importUrl: string;
-    contextId: number;
+    parentOutcomeGroup: {
+        id: number;
+        title: string;
+        vendorGuid: string | null;
+        url: string;
+        subgroupsUrl: string;
+        outcomesUrl: string;
+        canEdit: boolean;
+    };
+    contextNumber: number;
     contextType: string;
     description: string | null;
     outcomeGroupNumber: number;

@@ -25,14 +25,13 @@
 
 export interface CourseInterface {
     id: string; // Local GUID
-    courseId: number; // Integer from the API
     name: string;
     accountId: number;
-    uuid: string;
+    remoteUuid: string;
     startAt: string | null;
     gradingStandardId: number | null;
     isPublic: boolean | null;
-    createdAt: string;
+    remoteCreatedAt: string;
     courseCode: string;
     defaultView: string;
     rootAccountId: number;
